@@ -317,7 +317,7 @@
             <i class="fa-solid fa-chevron-down arrow-icon"></i>
           </button>
           <div class="accordion-content">
-            <a href="landing.php" class="nav-subitem active"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="index.php" class="nav-subitem active"><i class="fa-solid fa-house"></i> Home</a>
             <a href="company_ci_application.php" class="nav-subitem"><i class="fa-solid fa-chart-line"></i> CI Application</a>
             <a href="company_ci_project.php" class="nav-subitem"><i class="fa-solid fa-file-contract"></i> CI Project</a>
           </div>
