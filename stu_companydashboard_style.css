@@ -1,0 +1,547 @@
+/* ==========================================================================
+   Global Reset & Theme Variables
+   ========================================================================== */
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: #eff6ff;
+  --primary-border: #bfdbfe;
+  --dark-bg: #0d1b3e;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --card-bg: #ffffff;
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f8fafc;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   1. Navigation Header
+   ========================================================================== */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 60px;
+  background-color: var(--dark-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.header-logo {
+  height: 36px;
+  object-fit: contain;
+}
+
+.user-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
+}
+
+.user-dropdown:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #fff;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.user-name { font-weight: 600; }
+.user-role { color: #94a3b8; font-size: 11px; }
+
+/* ==========================================================================
+   2. Main Layout Container
+   ========================================================================== */
+.app-layout {
+  display: flex;
+  margin-top: 60px;
+  height: calc(100vh - 60px);
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   3. Collapsible Sidebar
+   ========================================================================== */
+.sidebar {
+  width: 270px;
+  background-color: #ffffff;
+  border-right: 1px solid var(--border-color);
+  padding: 18px 14px;
+  flex-shrink: 0;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sidebar-user-card {
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+  border: 1px solid var(--border-color);
+  margin-bottom: 20px;
+}
+
+.sidebar-user-greeting { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.sidebar-user-email { font-size: 13px; font-weight: 700; color: var(--text-main); margin: 2px 0; word-break: break-all; }
+.sidebar-user-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  background-color: #dbeafe;
+  color: var(--primary);
+  border-radius: 20px;
+}
+
+.sidebar-menu { display: flex; flex-direction: column; gap: 8px; }
+.accordion-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: none;
+  border: none;
+  font-weight: 700;
+  font-size: 13px;
+  color: #334155;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.accordion-header:hover { background-color: var(--primary-light); color: var(--primary); }
+.accordion-header span i { margin-right: 10px; color: var(--primary); }
+.arrow-icon { font-size: 12px; transition: transform 0.3s ease; }
+.accordion-item.open .arrow-icon { transform: rotate(180deg); }
+
+.accordion-content { display: none; flex-direction: column; padding-left: 14px; gap: 4px; margin-top: 4px; }
+.accordion-item.open .accordion-content { display: flex; }
+
+.nav-subitem {
+  padding: 9px 12px;
+  text-decoration: none;
+  font-size: 13px;
+  color: var(--text-muted);
+  border-radius: 8px;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.nav-subitem:hover { background-color: #f1f5f9; color: var(--text-main); }
+.nav-subitem.active { background-color: var(--primary-light); color: var(--primary); font-weight: 700; border-left: 3px solid var(--primary); }
+
+/* ==========================================================================
+   4. Main Content Workspace
+   ========================================================================== */
+.main-content {
+  flex: 1;
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Stepper Card */
+.flow-tracker-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.tracker-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.tracker-header h2 { font-size: 16px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
+.tracker-header h2 i { color: var(--primary); }
+
+.step-badge {
+  font-size: 12px;
+  background: var(--primary-light);
+  color: var(--primary);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stepper-wrapper { display: flex; align-items: center; justify-content: space-between; }
+.step-item { display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; z-index: 1; }
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: 2px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  transition: var(--transition);
+}
+
+.step-item.completed .step-number { background: #10b981; border-color: #10b981; color: #fff; }
+.step-item.active .step-number {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+.step-title { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+.step-item.active .step-title { color: var(--primary); font-weight: 800; }
+.step-item.completed .step-title { color: #10b981; font-weight: 700; }
+
+.step-connector { flex: 1; height: 3px; background: #e2e8f0; margin: 0 -10px 22px; }
+.step-connector.completed { background: #10b981; }
+.step-connector.active { background: linear-gradient(to right, #10b981, var(--primary)); }
+
+/* Grid Layout */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.grid-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.margin-top-card {
+  margin-top: 20px;
+}
+
+.highlight-card {
+  border-top: 4px solid #1d4ed8;
+}
+
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #1d4ed8;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.card-heading {
+  font-size: 18px;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.card-subtext {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 16px;
+}
+
+.card-text {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.contact-box {
+  background-color: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.btn-primary-action {
+  background-color: #1d4ed8;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.2s ease;
+}
+
+.btn-primary-action:hover {
+  background-color: #1e40af;
+}
+
+/* Document List */
+.document-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.document-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #f1f5f9;
+}
+
+.doc-icon {
+  width: 32px;
+  height: 32px;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.doc-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.doc-desc {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.note-box {
+  font-size: 11px;
+  color: #64748b;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background-color: #fffbebfb;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #fef3c7;
+}
+
+.note-box i {
+  color: #d97706;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   VERTICAL FLOWCHART DIAGRAM STYLES
+   ========================================================================== */
+.flowchart-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flow-banner {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: 800;
+  font-size: 14px;
+  color: #ffffff;
+  letter-spacing: 2px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(11, 17, 72, 0.15);
+}
+
+.flow-start {
+  background: linear-gradient(135deg, #2b388f 0%, #1c235e 100%);
+}
+
+.flow-end {
+  background: linear-gradient(135deg, #1c235e 0%, #0b1148 100%);
+}
+
+.diagram-pathway {
+  position: relative;
+  width: 100%;
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Central Blue Connecting Line */
+.connecting-line {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 50%;
+  width: 2px;
+  background-color: #3b82f6;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Floating Graphic Icons */
+.float-icon {
+  position: absolute;
+  color: #dbeafe;
+  font-size: 26px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.float-1 { top: 40px; right: 25px; }
+.float-2 { top: 120px; left: 30px; }
+.float-3 { top: 170px; left: 20px; color: #fed7aa; opacity: 0.6; }
+.float-4 { top: 260px; right: 20px; }
+.float-5 { top: 340px; right: 30px; color: #fed7aa; opacity: 0.6; }
+.float-6 { top: 400px; left: 30px; color: #fed7aa; opacity: 0.6; }
+.float-7 { top: 560px; left: 50%; transform: translateX(-50%); color: #fed7aa; opacity: 0.6; }
+
+/* Flowchart Step Card Positioning */
+.flow-card-row {
+  display: flex;
+  width: 100%;
+  z-index: 2;
+  position: relative;
+}
+
+.align-left { justify-content: flex-start; }
+.align-right { justify-content: flex-end; }
+.align-center { justify-content: center; }
+
+.flow-card {
+  width: 72%;
+  background: linear-gradient(135deg, #3b5998 0%, #2b388f 100%);
+  color: #ffffff;
+  padding: 16px 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(43, 56, 143, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.flow-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(43, 56, 143, 0.35);
+}
+
+.flow-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+  display: block;
+}
+
+.card-large {
+  width: 85%;
+  padding: 20px;
+  background: linear-gradient(135deg, #2b388f 0%, #1e293b 100%);
+}
+
+.card-large .flow-card-title {
+  font-size: 15px;
+}
+
+/* Active Highlight Styling */
+.active-card {
+  border: 2px solid #60a5fa;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.3);
+}
+
+.current-badge {
+  position: absolute;
+  top: -10px;
+  right: 12px;
+  background-color: #22c55e;
+  color: #ffffff;
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
