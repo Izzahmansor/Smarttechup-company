@@ -51,7 +51,7 @@
             <i class="fa-solid fa-chevron-down arrow-icon"></i>
           </button>
           <div class="accordion-content">
-            <a href="landing.php" class="nav-subitem"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="index.php" class="nav-subitem"><i class="fa-solid fa-house"></i> Home</a>
             <a href="company_loanstatus.php" class="nav-subitem"><i class="fa-solid fa-chart-line"></i> Loan Status</a>
             <a href="company_nda_agreement.php" class="nav-subitem active"><i class="fa-solid fa-file-contract"></i> NDA Agreement</a>
           </div>
